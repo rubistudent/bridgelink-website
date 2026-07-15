@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+  color: #1B1830;
+  background: #F7F4EC;
+}
+
+/* Tailwind can't express a stroke-dash "draw on" animation as a utility,
+   so this one bit of custom CSS powers the BridgeDivider component. */
+.bridge-cable {
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 1400;
+  transition: stroke-dashoffset 1.6s cubic-bezier(0.22, 0.9, 0.24, 1);
+}
+.bridge-cable.in-view {
+  stroke-dashoffset: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bridge-cable {
+    transition-duration: 0.01ms;
+  }
+}
