@@ -79,11 +79,11 @@ export const testimonials = [
 ]
 
 export const hours = [
-  ['Monday', '8.00am – 7.00pm'],
-  ['Tuesday', '8.00am – 7.00pm'],
-  ['Wednesday', '8.00am – 7.00pm'],
-  ['Thursday', '8.00am – 7.00pm'],
-  ['Friday', '8.00am – 7.00pm'],
+  ['Monday', '8.00am – 6.00pm'],
+  ['Tuesday', '8.00am – 6.00pm'],
+  ['Wednesday', '8.00am – 6.00pm'],
+  ['Thursday', '8.00am – 6.00pm'],
+  ['Friday', '8.00am – 6.00pm'],
   ['Saturday', '8.00am – 6.00pm'],
   ['Sunday', 'Closed'],
 ]
