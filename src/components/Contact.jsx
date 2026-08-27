@@ -64,7 +64,7 @@ export default function Contact() {
               </a>
               <span className="flex items-center gap-3 text-cream font-semibold text-sm">
                 <span className="w-9 h-9 rounded-full bg-cream/10 border border-cream/15 flex items-center justify-center">⚲</span>
-                Teak House, 2nd Floor, Room 18
+                Teak House, 2nd Floor, Room 20
               </span>
             </div>
 
