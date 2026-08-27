@@ -10,15 +10,27 @@ export default function Contact() {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
+  const encode = (data) => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&")
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Wire this up to your backend / email service of choice.
-    console.log('Contact form submitted:', form)
-    setSent(true)
-    setTimeout(() => {
-      setSent(false)
-      setForm({ name: '', phone: '', email: '', company: '', subject: '', message: '' })
-    }, 2600)
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", ...form })
+    })
+      .then(() => {
+        setSent(true)
+        setTimeout(() => {
+          setSent(false)
+          setForm({ name: '', phone: '', email: '', company: '', subject: '', message: '' })
+        }, 2600)
+      })
+      .catch((error) => alert('Error sending message: ' + error))
   }
 
   const inputClass =
@@ -71,7 +83,8 @@ export default function Contact() {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="bg-cream/5 border border-cream/15 rounded-2xl p-8">
+          <form onSubmit={handleSubmit} name="contact" data-netlify="true" className="bg-cream/5 border border-cream/15 rounded-2xl p-8">
+            <input type="hidden" name="form-name" value="contact" />
             <div className="grid sm:grid-cols-2 gap-4 mb-4">
               <div>
                 <label className="block font-mono text-[11px] tracking-wider uppercase text-cream/55 mb-2">Name</label>
